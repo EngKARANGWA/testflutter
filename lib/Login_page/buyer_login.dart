@@ -5,6 +5,7 @@ import '../services/user_service.dart';
 import '../services/location_service.dart';
 import '../Dashboard/buyer_dashboard.dart';
 import '../Signup_page/user_registration.dart';
+import '../main.dart'; // For AuthScreen class
 
 class BuyerLoginScreen extends StatefulWidget {
   const BuyerLoginScreen({super.key});
@@ -50,7 +51,8 @@ class _BuyerLoginScreenState extends State<BuyerLoginScreen> {
         }
 
         // Request location permission after successful login
-        final hasLocationPermission = await LocationService.requestLocationPermission();
+        final hasLocationPermission =
+            await LocationService.requestLocationPermission();
         if (!mounted) return;
 
         if (hasLocationPermission) {
@@ -150,7 +152,20 @@ class _BuyerLoginScreenState extends State<BuyerLoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Buyer Login'),
+        centerTitle: true,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const AuthScreen()),
+            );
+          },
+        ),
+        title: const Text(
+          'Buyer Login',
+          style: TextStyle(fontSize: 24, color: Colors.white),
+        ),
         backgroundColor: Colors.deepPurple,
       ),
       body: SingleChildScrollView(
@@ -223,7 +238,10 @@ class _BuyerLoginScreenState extends State<BuyerLoginScreen> {
                 ),
                 child: _isLoading
                     ? const CircularProgressIndicator(color: Colors.white)
-                    : const Text('Login'),
+                    : const Text(
+                        'Login',
+                        style: TextStyle(fontSize: 18, color: Colors.white),
+                      ),
               ),
               const SizedBox(height: 16),
               OutlinedButton(

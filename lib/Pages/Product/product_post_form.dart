@@ -115,12 +115,12 @@ class _ProductPostFormState extends State<ProductPostForm> {
                                 Icon(
                                   Icons.add_photo_alternate,
                                   size: 50,
-                                  color: Colors.grey,
+                                  color: Colors.white,
                                 ),
                                 SizedBox(height: 8),
                                 Text(
                                   'Tap to add product image',
-                                  style: TextStyle(color: Colors.grey),
+                                  style: TextStyle(color: Colors.white),
                                 ),
                               ],
                             )

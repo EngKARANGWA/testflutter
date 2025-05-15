@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test/main.dart';
 import '../services/user_service.dart';
 import '../Dashboard/seller_dashboard.dart';
 import '../Signup_page/user_registration.dart';
@@ -128,7 +129,20 @@ class _SellerLoginScreenState extends State<SellerLoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Seller Login'),
+        centerTitle: true,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const AuthScreen()),
+            );
+          },
+        ),
+        title: Text(
+          'Seller Login',
+          style: TextStyle(fontSize: 24, color: Colors.white),
+        ),
         backgroundColor: Colors.deepPurple,
       ),
       body: SingleChildScrollView(
@@ -201,7 +215,13 @@ class _SellerLoginScreenState extends State<SellerLoginScreen> {
                 ),
                 child: _isLoading
                     ? const CircularProgressIndicator(color: Colors.white)
-                    : const Text('Login'),
+                    : const Text(
+                        'Login',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                        ),
+                      ),
               ),
               const SizedBox(height: 16),
               OutlinedButton(

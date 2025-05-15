@@ -80,7 +80,12 @@ class _UserRegistrationState extends State<UserRegistration> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('${widget.userType.capitalize()} Registration'),
+        automaticallyImplyLeading: false,
+        centerTitle: true,
+        title: Text(
+          '${widget.userType.capitalize()} Registration',
+          style: TextStyle(color: Colors.white, fontSize: 24),
+        ),
         backgroundColor: Colors.deepPurple,
       ),
       body: SingleChildScrollView(
@@ -170,7 +175,8 @@ class _UserRegistrationState extends State<UserRegistration> {
                 ),
                 child: _isLoading
                     ? const CircularProgressIndicator(color: Colors.white)
-                    : Text('Register as ${widget.userType.capitalize()}'),
+                    : Text('Register as ${widget.userType.capitalize()}',
+                        style: TextStyle(color: Colors.white, fontSize: 16)),
               ),
             ],
           ),
